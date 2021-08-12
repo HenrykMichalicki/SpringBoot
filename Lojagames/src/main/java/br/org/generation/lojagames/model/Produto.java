@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -26,6 +27,7 @@ public class Produto {
 	private String titulo;
 	
 	@NotNull (message = "O campo descricao deve ser obrigatório!")
+	@Size (min = 5, max = 500, message = "O campo descrição deve ter no mínimo 5 e no máximo 500 caracteres")
 	private String descricao;
 	
 	@NotNull (message = "O campo console deve ser obrigatório!")
@@ -39,7 +41,10 @@ public class Produto {
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
 	
-
+	@ManyToOne // vários produtos para um usuário
+	@JsonIgnoreProperties("produto")
+	private Usuario usuario;
+	
 
 	public long getId() {
 		return id;
@@ -86,7 +91,17 @@ public class Produto {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}	
+	
+	
 	
 	
 	
