@@ -43,6 +43,21 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+	
+	// Primeiro método Construtor - Com os atributos, no qual se testa colocar esses atributos nulos, para verificar qual a resposta do sistema
+	
+	public Usuario(long id, String nome, String usuario, String senha,
+	LocalDate dataNascimento) {
+	this.id = id; // this faz um referência direta ao atributo id, ou seja, o atributo do objeto id, recebe o valor de id
+	this.nome = nome;
+	this.usuario = usuario;
+	this.senha = senha;
+	this.dataNascimento = dataNascimento;
+	}
+	// Segundo método Construtor - Sem os atributos
+	
+	public Usuario() { }
+
 
 	public long getId() {
 		return id;

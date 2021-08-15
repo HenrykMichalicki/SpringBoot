@@ -5,8 +5,10 @@ import java.util.Optional;
 
 import org.generation.blogPessoal.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 // comunicação da api com o banco de dados
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	// Optional porque pode retornar uma resposta vazia
@@ -14,7 +16,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 	
 	public List<Usuario> findAllByNomeContainingIgnoreCase (String nome);
 	
-	public Usuario findByNome (String nome);
+	public Usuario findByNome (String nome); 
 	
 	
 	
